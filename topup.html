@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up - MannnStore</title>
+
+    <style>
+        html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main.container {
+    flex: 1 0 auto;
+}
+
+.footer-custom {
+    flex-shrink: 0;
+}
+    </style>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="bi bi-gem"></i> MannnStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#topup">Top Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="games.html">Games</a></li>
+                    <li class="nav-item"><a class="nav-link" href="promo.html">Promo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 120px;">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="game-card-custom p-4 p-md-5">
+                    <h2 class="section-title text-center">Formulir Top Up</h2>
+                    <p class="text-center opacity-75 mb-5">Pilih game, lengkapi data, pilih nominal, dan metode pembayaran untuk melanjutkan.</p>
+
+                    <form id="topupForm" novalidate>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">1. Pilih Game</label>
+                            <select class="form-select" id="game-select" name="game" required>
+                                <option selected disabled value="">Pilih Game...</option>
+                                <option value="mobile-legends">Mobile Legends</option>
+                                <option value="wuthering-waves">Wuthering Waves</option>
+                                <option value="magic-chest">Magic Chest Go Go</option>
+                                <option value="summoners-war">Summoners War</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">2. Lengkapi Data</label>
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="user-id" name="user_id" placeholder="Masukkan User ID" required>
+                                </div>
+                                <div class="col-md-6">
+                                        <input type="text" class="form-control" id="server-select" name="server" list="server-list" placeholder="pilih server" required>
+                                        <datalist id="server-list">
+                                            <option value="Global">
+                                            <option value="Asia">
+                                            <option value="Europe">
+                                        </datalist>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">3. Pilih Nominal</label>
+                            <div class="nominal-grid" id="nominal-container">
+                                <div class="text-center text-muted py-4">
+                                    <i class="bi bi-controller fs-1 mb-2"></i>
+                                    <p>Pilih game terlebih dahulu</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="price-display" id="price-display" style="display: none;">
+                            <h4>Total Pembayaran</h4>
+                            <div class="price" id="total-price">Rp 0</div>
+                            <small class="text-muted" id="currency-type">Diamond</small>
+                        </div>
+
+                        <div class="mb-5">
+    <label class="form-label fw-bold" for="payment-select">4. Pilih Pembayaran</label>
+    <input type="text" class="form-control" name="payment_method" id="payment-select" list="bank-list" placeholder="Ketik atau pilih metode pembayaran..." required>
+    <datalist id="bank-list">
+        <option value="BNI">
+        <option value="BRI">
+        <option value="BPD">
+        <option value="DANA">
+    </datalist>
+</div>
+
+<!-- Tambahkan di sini -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold" for="rekening-tujuan">5. Nomor Rekening Tujuan</label>
+                            <input type="text" class="form-control" id="rekening-tujuan" name="rekening_tujuan" placeholder="Masukkan nomor rekening tujuan" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold" for="nominal-pembayaran">6. Nominal Pembayaran</label>
+                            <input type="number" class="form-control" id="nominal-pembayaran" name="nominal_pembayaran" placeholder="Masukkan nominal pembayaran" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold" for="pin">7. PIN</label>
+                            <input type="password" class="form-control" id="pin" name="pin" placeholder="Masukkan PIN Anda" required minlength="4" maxlength="6">
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-custom btn-lg">
+                                <i class="bi bi-cart-check-fill me-2"></i> Beli Sekarang
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-custom text-white py-4 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 MannnStore.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Platform Top Up Game Terpercaya di Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">🎮 Konfirmasi Pembelian</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Pastikan data pesanan Anda sudah benar sebelum melanjutkan.</p>
+                    <div id="modal-order-details">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" id="confirm-purchase-btn" class="btn btn-custom">Lanjutkan Pembayaran</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="data.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semua Game - DiamondStore</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="bi bi-gem"></i> MannnStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="topup.html">Top Up</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="games.html">Games</a></li>
+                    <li class="nav-item"><a class="nav-link" href="promo.html">Promo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 120px;">
+        <!-- Header Section -->
+        <div class="text-center mb-5">
+            <h1 class="section-title">Semua Game</h1>
+            <p class="lead opacity-75">Pilih game favorit Anda dan mulai top up sekarang!</p>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color);">
+                        <i class="bi bi-search text-white"></i>
+                    </span>
+                    <input type="text" class="form-control border-start-0" id="searchInput" placeholder="Cari game..." style="border-color: var(--border-color);">
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="text-center mb-5">
+            <div class="btn-group flex-wrap" role="group" id="categoryFilter">
+                <input type="radio" class="btn-check" name="category" id="all" value="all" checked>
+                <label class="btn btn-outline-light" for="all">Semua</label>
+
+                <input type="radio" class="btn-check" name="category" id="moba" value="moba">
+                <label class="btn btn-outline-light" for="moba">MOBA</label>
+
+                <input type="radio" class="btn-check" name="category" id="rpg" value="rpg">
+                <label class="btn btn-outline-light" for="rpg">RPG</label>
+
+                <input type="radio" class="btn-check" name="category" id="action" value="action">
+                <label class="btn btn-outline-light" for="action">tembaktembakan</label>
+
+                <input type="radio" class="btn-check" name="category" id="strategy" value="strategy">
+                <label class="btn btn-outline-light" for="strategy">Strategy</label>
+
+                <input type="radio" class="btn-check" name="category" id="arcade" value="arcade">
+                <label class="btn btn-outline-light" for="arcade">Arcade</label>
+            </div>
+        </div>
+
+        <!-- Games Grid -->
+        <div class="row g-4" id="gamesContainer">
+            <!-- MOBA Games -->
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="moba" data-name="mobile legends">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="ml.jpg" class="card-img-top" alt="Mobile Legends">
+                        <div class="category-badge">MOBA</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">Mobile Legends</h5>
+                            <p class="card-text">Diamond ML dengan harga terbaik dan proses cepat</p>
+                            <div class="price-range">Mulai dari Rp 20.000</div>
+                        </div>
+                        <a href="topup.html?game=mobile-legends" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="moba" data-name="arena of valor">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="aov.webp" class="card-img-top" alt="Arena of Valor">
+                        <div class="category-badge">MOBA</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">Arena of Valor</h5>
+                            <p class="card-text">Voucher AOV murah dan terpercaya</p>
+                            <div class="price-range">Mulai dari Rp 15.000</div>
+                        </div>
+                        <a href="topup.html?game=arena-of-valor" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RPG Games -->
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="rpg" data-name="wuthering waves">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="ww.jpg" class="card-img-top" alt="Wuthering Waves">
+                        <div class="category-badge">RPG</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">Wuthering Waves</h5>
+                            <p class="card-text">Astrid Wuthering Waves dengan harga kompetitif</p>
+                            <div class="price-range">Mulai dari Rp 15.000</div>
+                        </div>
+                        <a href="topup.html?game=wuthering-waves" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="rpg" data-name="summoners war">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="sw.jpg" class="card-img-top" alt="Summoners War">
+                        <div class="category-badge">RPG</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">Summoners War</h5>
+                            <p class="card-text">Crystal Summoners War termurah se-Indonesia</p>
+                            <div class="price-range">Mulai dari Rp 15.000</div>
+                        </div>
+                        <a href="topup.html?game=summoners-war" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="rpg" data-name="genshin impact">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="gi.jpg" class="card-img-top" alt="Genshin Impact">
+                        <div class="category-badge">RPG</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">Genshin Impact</h5>
+                            <p class="card-text">Genesis Crystal dengan proses instan</p>
+                            <div class="price-range">Mulai dari Rp 16.000</div>
+                        </div>
+                        <a href="topup.html?game=genshin-impact" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Games -->
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="action" data-name="free fire">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="epep.jpg" class="card-img-top" alt="Free Fire">
+                        <div class="category-badge">Tembaktembakan</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">Free Fire</h5>
+                            <p class="card-text">Diamond Free Fire murah dan aman</p>
+                            <div class="price-range">Mulai dari Rp 10.000</div>
+                        </div>
+                        <a href="topup.html?game=free-fire" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="action" data-name="pubg mobile">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="pubgm.jpg" class="card-img-top" alt="PUBG Mobile">
+                        <div class="category-badge">Tembaktembakan</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">PUBG Mobile</h5>
+                            <p class="card-text">UC PUBG Mobile dengan harga terjangkau</p>
+                            <div class="price-range">Mulai dari Rp 12.000</div>
+                        </div>
+                        <a href="topup.html?game=pubg-mobile" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategy Games -->
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="strategy" data-name="clash of clans">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="coc.jpg" class="card-img-top" alt="Clash of Clans">
+                        <div class="category-badge">Strategy</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">Clash of Clans</h5>
+                            <p class="card-text">Gems COC dengan proses cepat dan aman</p>
+                            <div class="price-range">Mulai dari Rp 14.000</div>
+                        </div>
+                        <a href="topup.html?game=clash-of-clans" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="strategy" data-name="clash royale">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="cr.jpg" class="card-img-top" alt="Clash Royale">
+                        <div class="category-badge">Strategy</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">Clash Royale</h5>
+                            <p class="card-text">Gems Clash Royale terpercaya dan murah</p>
+                            <div class="price-range">Mulai dari Rp 14.000</div>
+                        </div>
+                        <a href="topup.html?game=clash-royale" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arcade Games -->
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="arcade" data-name="magic chess">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="mcgg.jpg" class="card-img-top" alt="Magic Chess">
+                        <div class="category-badge">Arcade</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">Magic Chess</h5>
+                            <p class="card-text">Diamond Magic Chess dengan harga bersaing</p>
+                            <div class="price-range">Mulai dari Rp 12.000</div>
+                        </div>
+                        <a href="topup.html?game=magic-chess" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 game-item" data-category="arcade" data-name="magic chest go go">
+                <div class="card game-card-custom">
+                    <div class="card-img-wrapper">
+                        <img src="mcgg.jpg" class="card-img-top" alt="Magic Chest Go Go">
+                        <div class="category-badge">Arcade</div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title fw-bold">Magic Chest Go Go</h5>
+                            <p class="card-text">Diamond MCGG dengan proses instan</p>
+                            <div class="price-range">Mulai dari Rp 12.000</div>
+                        </div>
+                        <a href="topup.html?game=magic-chest" class="btn btn-custom btn-sm w-100 mt-3">
+                            <i class="bi bi-gem me-1"></i> Top Up
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div class="text-center py-5" id="noResults" style="display: none;">
+            <i class="bi bi-search fs-1 mb-3 opacity-50"></i>
+            <h4>Game tidak ditemukan</h4>
+            <p class="text-muted">Coba kata kunci lain atau pilih kategori berbeda</p>
+        </div>
+    </main>
+
+    <footer class="footer-custom text-white py-4 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 MannnStore.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Platform Top Up Game Terpercaya di Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const gamesContainer = document.getElementById('gamesContainer');
+            const noResults = document.getElementById('noResults');
+            const gameItems = document.querySelectorAll('.game-item');
+
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                filterGames();
+            });
+
+            // Category filter functionality
+            categoryFilter.addEventListener('change', function() {
+                filterGames();
+            });
+
+            function filterGames() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedCategory = document.querySelector('input[name="category"]:checked').value;
+                let visibleCount = 0;
+
+                gameItems.forEach(item => {
+                    const gameName = item.dataset.name.toLowerCase();
+                    const gameCategory = item.dataset.category;
+                    
+                    const matchesSearch = gameName.includes(searchTerm);
+                    const matchesCategory = selectedCategory === 'all' || gameCategory === selectedCategory;
+                    
+                    if (matchesSearch && matchesCategory) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no results message
+                if (visibleCount === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            }
+
+            // Add hover effects
+            gameItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

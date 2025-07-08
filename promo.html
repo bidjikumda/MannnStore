@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo Top Up - MannnStore</title>
+
+    <style>
+        html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main.container {
+    flex: 1 0 auto;
+}
+
+.footer-custom {
+    flex-shrink: 0;
+}
+    </style>
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="bi bi-gem"></i> MannnStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="topup.html">Top Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="games.html">Games</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="promo.html">Promo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 120px;">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="game-card-custom p-4 p-md-5">
+                    <h2 class="section-title text-center">Promo Top Up Spesial</h2>
+                    <p class="text-center opacity-75 mb-4">Dapatkan diskon khusus untuk wilayah Jawa!</p>
+                    
+                    <!-- Region Selection -->
+                    <div class="mb-4 text-center">
+                        <label class="form-label">Pilih Wilayah Anda:</label>
+                        <select class="form-select w-auto mx-auto" id="regionSelect">
+                            <option value="lain">Luar Jawa</option>
+                            <option value="jawa">Jawa</option>
+                        </select>
+                    </div>
+
+                    <!-- No Promo Message -->
+                    <div class="text-center py-5" id="noPromo" style="display: none;">
+                        <i class="bi bi-megaphone fs-1 mb-3 opacity-50"></i>
+                        <h4>Tidak ada diskon untuk wilayah Anda</h4>
+                        <p class="text-muted">Promo hanya tersedia untuk wilayah Jawa.</p>
+                    </div>
+
+                    <!-- Top Up Form -->
+                    <div id="topupSection" style="display: none;">
+                        <form id="topupForm" novalidate>
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">1. Pilih Game</label>
+                                <select class="form-select" id="game-select" name="game" required>
+                                    <option selected disabled value="">Pilih Game...</option>
+                                    <option value="mobile-legends">Mobile Legends</option>
+                                    <option value="wuthering-waves">Wuthering Waves</option>
+                                    <option value="magic-chest">Magic Chest Go Go</option>
+                                    <option value="summoners-war">Summoners War</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">2. Lengkapi Data</label>
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="user-id" name="user_id" placeholder="Masukkan User ID" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="server-select" name="server" list="server-list" placeholder="pilih server" required>
+                                        <datalist id="server-list">
+                                            <option value="Global">
+                                            <option value="Asia">
+                                            <option value="Europe">
+                                        </datalist>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">3. Pilih Nominal</label>
+                                <div class="nominal-grid" id="nominal-container">
+                                    <div class="text-center text-muted py-4">
+                                        <i class="bi bi-controller fs-1 mb-2"></i>
+                                        <p>Pilih game terlebih dahulu</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="price-display" id="price-display" style="display: none;">
+                                <h4>Total Pembayaran</h4>
+                                <div class="price" id="total-price">Rp 0</div>
+                                <div class="text-decoration-line-through opacity-50" id="original-price" style="display: none;">Harga Normal: Rp 0</div>
+                                <small class="text-muted d-block mt-2" id="currency-type">Diamond</small>
+                                <div class="mt-2">
+                                    <span class="badge bg-success">Diskon Jawa 10%</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-5">
+    <label class="form-label fw-bold" for="payment-select">4. Pilih Pembayaran</label>
+    <input type="text" class="form-control" name="payment_method" id="payment-select" list="bank-list" placeholder="Ketik atau pilih metode pembayaran..." required>
+    <datalist id="bank-list">
+        <option value="BNI">
+        <option value="BRI">
+        <option value="BPD">
+        <option value="DANA">
+    </datalist>
+</div>
+
+
+                            <div class="mb-4">
+    <label class="form-label fw-bold" for="rekening-tujuan">5. Nomor Rekening Tujuan</label>
+    <input type="text" class="form-control" id="rekening-tujuan" name="rekening_tujuan" placeholder="Masukkan nomor rekening tujuan" required>
+</div>
+<div class="mb-4">
+    <label class="form-label fw-bold" for="nominal-pembayaran">6. Nominal Pembayaran</label>
+    <input type="number" class="form-control" id="nominal-pembayaran" name="nominal_pembayaran" placeholder="Masukkan nominal pembayaran" required>
+</div>
+<div class="mb-4">
+    <label class="form-label fw-bold" for="pin">7. PIN</label>
+    <input type="password" class="form-control" id="pin" name="pin" placeholder="Masukkan PIN Anda" required minlength="4" maxlength="6">
+</div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-custom btn-lg">
+                                    <i class="bi bi-cart-check-fill me-2"></i> Beli Sekarang dengan Diskon
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-custom text-white py-4 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 MannnStore.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Platform Top Up Game Terpercaya di Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">🎮 Konfirmasi Pembelian</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Pastikan data pesanan Anda sudah benar sebelum melanjutkan.</p>
+                    <div id="modal-order-details"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" id="confirm-purchase-btn" class="btn btn-custom">Lanjutkan Pembayaran</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Database game dan harga
+        const gameData = {
+            'mobile-legends': { 
+                name: 'Mobile Legends', 
+                currency: 'Diamond', 
+                nominals: { 
+                    '86': { price: 20000, label: '86 Diamond' }, 
+                    '172': { price: 39000, label: '172 Diamond' }, 
+                    '257': { price: 59000, label: '257 Diamond' }, 
+                    '344': { price: 79000, label: '344 Diamond' }, 
+                    '429': { price: 99000, label: '429 Diamond' }, 
+                    '514': { price: 119000, label: '514 Diamond' }
+                }
+            },
+            'wuthering-waves': { 
+                name: 'Wuthering Waves', 
+                currency: 'Astrid', 
+                nominals: { 
+                    '60': { price: 15000, label: '60 Astrid' }, 
+                    '300': { price: 75000, label: '300 Astrid' }, 
+                    '980': { price: 235000, label: '980 Astrid' }, 
+                    '1980': { price: 475000, label: '1980 Astrid' }
+                }
+            },
+            'magic-chest': { 
+                name: 'Magic Chest Go Go', 
+                currency: 'Diamond', 
+                nominals: { 
+                    '60': { price: 12000, label: '60 Diamond' }, 
+                    '125': { price: 25000, label: '125 Diamond' }, 
+                    '250': { price: 49000, label: '250 Diamond' }, 
+                    '500': { price: 95000, label: '500 Diamond' }
+                }
+            },
+            'summoners-war': { 
+                name: 'Summoners War', 
+                currency: 'Crystal', 
+                nominals: { 
+                    '100': { price: 15000, label: '100 Crystal' }, 
+                    '250': { price: 35000, label: '250 Crystal' }, 
+                    '500': { price: 70000, label: '500 Crystal' }, 
+                    '1000': { price: 140000, label: '1000 Crystal' }
+                }
+            }
+        };
+
+        // Format Rupiah
+        function formatRupiah(angka) {
+            return 'Rp ' + angka.toLocaleString('id-ID');
+        }
+
+        // Calculate discounted price
+        function calculateDiscountedPrice(originalPrice) {
+            return Math.round(originalPrice * 0.9);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let selectedGame = null;
+            const regionSelect = document.getElementById('regionSelect');
+            const noPromo = document.getElementById('noPromo');
+            const topupSection = document.getElementById('topupSection');
+            const gameSelect = document.getElementById('game-select');
+            const nominalContainer = document.getElementById('nominal-container');
+            const priceDisplay = document.getElementById('price-display');
+            const totalPrice = document.getElementById('total-price');
+            const originalPriceEl = document.getElementById('original-price');
+            const currencyType = document.getElementById('currency-type');
+            const topupForm = document.getElementById('topupForm');
+            const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+
+            // Handle region selection
+            regionSelect.addEventListener('change', function() {
+                const selectedRegion = this.value;
+                
+                if (selectedRegion === 'jawa') {
+                    noPromo.style.display = 'none';
+                    topupSection.style.display = 'block';
+                } else {
+                    noPromo.style.display = 'block';
+                    topupSection.style.display = 'none';
+                }
+            });
+
+            // Function to render nominals based on selected game
+            function renderNominals(gameKey) {
+                const game = gameData[gameKey];
+                if (!game) return;
+
+                nominalContainer.innerHTML = '';
+                Object.keys(game.nominals).forEach((nominalValue, index) => {
+                    const data = game.nominals[nominalValue];
+                    const originalPrice = data.price;
+                    const discountedPrice = calculateDiscountedPrice(originalPrice);
+                    
+                    const nominalElement = document.createElement('div');
+                    nominalElement.innerHTML = `
+                        <input type="radio" class="btn-check" name="nominal" id="nominal${index}" value="${nominalValue}" autocomplete="off">
+                        <label class="btn btn-outline-light w-100" for="nominal${index}">
+                            ${data.label}<br>
+                            <small class="fw-bold text-warning">${formatRupiah(discountedPrice)}</small><br>
+                            <small class="text-decoration-line-through opacity-50">${formatRupiah(originalPrice)}</small>
+                        </label>
+                    `;
+                    nominalContainer.appendChild(nominalElement);
+                });
+
+                // Add event listeners to newly created radio buttons
+                document.querySelectorAll('input[name="nominal"]').forEach(radio => {
+                    radio.addEventListener('change', updatePrice);
+                });
+            }
+
+            // Function to update price display
+            function updatePrice() {
+                const selectedNominalRadio = document.querySelector('input[name="nominal"]:checked');
+                if (selectedNominalRadio && selectedGame) {
+                    const nominalValue = selectedNominalRadio.value;
+                    const game = gameData[selectedGame];
+                    const nominalData = game.nominals[nominalValue];
+                    const originalPrice = nominalData.price;
+                    const discountedPrice = calculateDiscountedPrice(originalPrice);
+
+                    totalPrice.textContent = formatRupiah(discountedPrice);
+                    originalPriceEl.textContent = `Harga Normal: ${formatRupiah(originalPrice)}`;
+                    originalPriceEl.style.display = 'block';
+                    currencyType.textContent = nominalData.label;
+                    priceDisplay.style.display = 'block';
+                    priceDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    priceDisplay.style.display = 'none';
+                    originalPriceEl.style.display = 'none';
+                }
+            }
+
+            // Event listener for game selection
+            gameSelect.addEventListener('change', function() {
+                selectedGame = this.value;
+                priceDisplay.style.display = 'none';
+                originalPriceEl.style.display = 'none';
+                document.querySelectorAll('input[name="nominal"]').forEach(r => r.checked = false);
+                
+                if (selectedGame) {
+                    renderNominals(selectedGame);
+                } else {
+                    nominalContainer.innerHTML = `
+                        <div class="text-center text-muted py-4">
+                            <i class="bi bi-controller fs-1 mb-2"></i>
+                            <p>Pilih game terlebih dahulu</p>
+                        </div>`;
+                }
+            });
+
+            // Handle form submission
+            topupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(topupForm);
+                const nominal = formData.get('nominal');
+
+                // Simple validation
+                if (!formData.get('game') || !formData.get('user_id') || !formData.get('server') || !nominal || !formData.get('payment_method')) {
+                    alert('Harap lengkapi semua data sebelum melanjutkan!');
+                    return;
+                }
+
+                // Get data for modal
+                const gameKey = formData.get('game');
+                const game = gameData[gameKey];
+                const item = game.nominals[nominal];
+                const originalPrice = item.price;
+                const discountedPrice = calculateDiscountedPrice(originalPrice);
+
+                // Insert order details into modal
+                document.getElementById('modal-order-details').innerHTML = `
+                    <ul class="list-unstyled">
+                        <li><strong>Game:</strong> ${game.name}</li>
+                        <li><strong>User ID:</strong> ${formData.get('user_id')}</li>
+                        <li><strong>Server:</strong> ${formData.get('server').toUpperCase()}</li>
+                        <li><strong>Item:</strong> ${item.label}</li>
+                        <li><strong>Pembayaran:</strong> ${formData.get('payment_method').toUpperCase()}</li>
+                        <li class="mt-3">
+                            <div class="text-decoration-line-through opacity-50">Harga Normal: ${formatRupiah(originalPrice)}</div>
+                            <div class="fs-5 fw-bold text-white">
+                                Total: <span class="text-warning">${formatRupiah(discountedPrice)}</span>
+                            </div>
+                            <div class="mt-2">
+                                <span class="badge bg-success">Diskon Jawa 10%</span>
+                            </div>
+                        </li>
+                    </ul>`;
+
+                // Show modal
+                confirmationModal.show();
+            });
+
+            // Handle purchase confirmation
+            document.getElementById('confirm-purchase-btn').addEventListener('click', function() {
+                confirmationModal.hide();
+                
+                const submitButton = topupForm.querySelector('button[type="submit"]');
+                submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Memproses...';
+                submitButton.disabled = true;
+
+                // Simulate payment processing
+                setTimeout(() => {
+                    alert('Terima kasih! Pesanan Anda telah diterima dengan diskon Jawa 10%!');
+                    topupForm.reset();
+                    gameSelect.dispatchEvent(new Event('change'));
+                    submitButton.innerHTML = '<i class="bi bi-cart-check-fill me-2"></i> Beli Sekarang dengan Diskon';
+                    submitButton.disabled = false;
+                }, 2000);
+            });
+
+            // Initialize page
+            regionSelect.dispatchEvent(new Event('change'));
+        });
+    </script>
+</body>
+</html>
