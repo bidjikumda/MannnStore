@@ -262,6 +262,14 @@ body {
     }
 }
 
+.card-title{
+    color: white;
+}
+
+.card-text{
+    color: white;
+}
+
 .card-img-top {
     height: 160px;
     object-fit: cover;
