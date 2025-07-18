@@ -270,6 +270,16 @@ body {
     color: white;
 }
 
+.category-badge{
+    color:#8de2ef;
+}
+
+.price-range{
+    color: #11eb18;
+}
+
+}
+
 .card-img-top {
     height: 160px;
     object-fit: cover;
