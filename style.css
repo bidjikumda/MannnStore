@@ -190,59 +190,81 @@ body {
 }
 
 /* Responsive */
+@media (max-width: 991px) {
+    .container, .main.container {
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .row.g-4 {
+        gap: 1rem;
+    }
+    .col-lg-3, .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .game-card-custom {
+        margin-bottom: 24px;
+    }
+    .card-img-top {
+        height: 120px;
+    }
+}
+
+@media (max-width: 767px) {
+    .section-title {
+        font-size: 1.3rem;
+    }
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    .footer-custom {
+        font-size: 0.95rem;
+        padding: 1rem 0;
+    }
+    .carousel-caption {
+        font-size: 0.95rem;
+        padding-bottom: 1.2rem;
+    }
+    .card-img-top {
+        height: 100px;
+    }
+    .game-card-custom {
+        padding: 0.5rem;
+    }
+    .price-display h4 {
+        font-size: 1.1rem;
+    }
+    .price-display .price {
+        font-size: 1.1rem;
+    }
+}
+
 @media (max-width: 575px) {
+    .game-card-custom {
+        margin-bottom: 18px;
+    }
+    .card-img-top {
+        height: 80px;
+    }
+    .carousel-caption h5 {
+        font-size: 1rem;
+    }
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+    .btn-custom {
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem;
+    }
     .nominal-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-.card-img-wrapper {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card-img-wrapper img {
-            transition: transform 0.3s ease;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .game-card-custom:hover .card-img-wrapper img {
-            transform: scale(1.05);
-        }
-        
-        .category-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(59, 130, 246, 0.9);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-        }
-        
-        .price-range {
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin: 0.5rem 0;
-        }
-        
-        .game-item {
-            transition: transform 0.3s ease;
-        }
-        
-        @media (max-width: 768px) {
-            .btn-group {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .btn-group .btn {
-                margin-bottom: 0.5rem;
-            }
-        }
-
+.card-img-top {
+    height: 160px;
+    object-fit: cover;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
